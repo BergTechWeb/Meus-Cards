@@ -1,0 +1,15 @@
+#Pokemon{
+  font-size: 37px;
+  font-family: "Courier New", monospace ;
+  color: white;
+}
+
+#bannerPrincipal{
+    overflow: hidden;
+    width: 1360px;
+    height: 330px;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
