@@ -1,13 +1,12 @@
-let paragravo = document.querySelector("#paragravo");
-let categoria = document.querySelector("#categoria");
-const categoriaValor = categoria.value;
-let botao2 = document.querySelector("#salvar");
-let botao = document.querySelector("#proximo");
+const paragravo = document.querySelector("#paragravo");
+const categoria = document.querySelector("#categoria");
+const botao2 = document.querySelector("#salvar");
+const botao = document.querySelector("#proximo");
 
 function categoria2() {
     botao2.classList.remove("oculto");
     botao.classList.add("oculto");
-    window.alert(categoriaValor);
+    let categoriaValor = categoria.value;
     if (categoriaValor == "Treinador")
     {
         treinador();
@@ -91,7 +90,6 @@ function treinador() {
 }
 
 function pokemon() {
-    window.alert("teste");
     criarParagravo("pNome");
     criarParagravo("pColecao");
     criarParagravo("pLocal");
@@ -105,11 +103,12 @@ function pokemon() {
     criarLabel("Data que adqueriu a carta: ", "pData");
     criarLabel("Raridade da carta: ", "pRaridade");
     criarLabel("Qual o elemento: ", "pElemento");
-    criarLabel("Possui Shiny", "pShiny");
+    criarLabel("Possui Shiny: ", "pShiny");
     criarInput("pNome", "nome");
     criarInput("pLocal", "local");
     criarInput("pData", "data");
     criarInput("pColecao", "colecao");
+    criarInput("pElemento", "elemento");
     criarSelect("pRaridade", "raridade");
     criarOpton1("raridade", "comum", "incomum", "rara", "promocional", "ultra-rara");
     criarSelect("pShiny", "shiny");
@@ -130,12 +129,14 @@ function energia() {
     criarInput("pData", "data");
     criarSelect("pRaridade", "raridade");
     criarOpton1("raridade", "comum", "incomum", "rara", "promocional", "ultra-rara");
-    criarLabel("Qual o elemento: ", "pElemento");
+    criarInput("pElemento", "elemento");
     return null;
 }
 
 function apagar() {
     paragravo.innerHTML = "";
+    botao.classList.remove("oculto");
+    botao2.classList.add("oculto");
 }
 
 botao.addEventListener("click", categoria2);
