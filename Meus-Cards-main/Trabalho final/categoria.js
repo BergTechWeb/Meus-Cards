@@ -133,11 +133,4 @@ function energia() {
     return null;
 }
 
-function apagar() {
-    paragravo.innerHTML = "";
-    botao.classList.remove("oculto");
-    botao2.classList.add("oculto");
-}
-
 botao.addEventListener("click", categoria2);
-botao2.addEventListener("click", apagar);

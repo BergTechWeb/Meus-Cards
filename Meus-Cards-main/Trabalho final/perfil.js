@@ -6,11 +6,11 @@ let emailCatrasto = document.querySelector("#email-catrasto");
 let paisCatrasto = document.querySelector("#pais-catrasto");
 
 function carregar() {
-    nomeCatrasto.value = localStorage.getItem('nome');
-    sobrenomeCatrasto.value = localStorage.getItem('sobrenome');
-    dataCatrasto.value = localStorage.getItem('data');
-    emailCatrasto.value = localStorage.getItem('email');
-    paisCatrasto.value = localStorage.getItem('pais');
+    nomeCatrasto.value = localStorage.getItem('nomePerfil');
+    sobrenomeCatrasto.value = localStorage.getItem('sobrenomePerfil');
+    dataCatrasto.value = localStorage.getItem('dataPerfil');
+    emailCatrasto.value = localStorage.getItem('emailPerfil');
+    paisCatrasto.value = localStorage.getItem('paisPerfil');
     return null;
 }
 
@@ -20,11 +20,11 @@ function salvar() {
     let dataValorCadrasto = dataCatrasto.value;
     let emailValorCadrasto = emailCatrasto.value;
     let paisValorCadrasto = paisCatrasto.value;
-    localStorage.setItem('nome', nomeValorCadrasto);
-    localStorage.setItem('sobrenome', sobrenomeValorCadrasto);
-    localStorage.setItem('data', dataValorCadrasto);
-    localStorage.setItem('email', emailValorCadrasto);
-    localStorage.setItem('pais', paisValorCadrasto);
+    localStorage.setItem('nomePerfil', nomeValorCadrasto);
+    localStorage.setItem('sobrenomePerfil', sobrenomeValorCadrasto);
+    localStorage.setItem('dataPerfil', dataValorCadrasto);
+    localStorage.setItem('emailPerfil', emailValorCadrasto);
+    localStorage.setItem('paisPerfil', paisValorCadrasto);
     carregar();
     return null
 }

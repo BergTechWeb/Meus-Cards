@@ -1,65 +1,126 @@
-const botaoSalvar = document.querySelector("#salvar");
-const data = document.querySelector("#data");
-const local = document.querySelector("#local");
-const nome = document.querySelector("#nome");
-const raridade = document.querySelector("#raridade");
-const colecao = document.querySelector("#colecao");
-const carta = document.querySelector("#todas-cartas");
+const foto = document.querySelector("#foto");
+const categoria1 = document.querySelector("#categoria");
 
-let informacoes = [
+let informacoesPokemon = [];
+let informacoesEnergia = [];
+let informacoesTreinador = [];
+
+function apagar() {
+    paragravo.innerHTML = "";
+    botao.classList.remove("oculto");
+    botao2.classList.add("oculto");
+}
+
+function salvar() {
+    let categoriaValor = categoria1.value;
+    let contadorEnrgia = -1;
+    let contadorPokemon = -1;
+    let contadorTreinador = -1; 
+    localStorage.setItem('contadorTreinador', contadorTreinador);
+    localStorage.setItem('contadorPokemon', contadorPokemon);
+    localStorage.setItem('contadorEnergia', contadorEnrgia);
+    if (categoriaValor == "Treinador")
     {
-        nome: 'teste',
-        data: '0112',
-        local: 'casa',
-        raridade: 'comum',
-        colecao: '9'
+        contadorTreinador++;
+        salvarTreinador();
+        localStorage.setItem('contadorTreinador', contadorTreinador);
     }
-];
-
-function salvarCarta() {
-    let dataValor = data.value;
-    let localValor = local.value;
-    let nomeValor = nome.value;
-    let raridadeValor = raridade.value;
-    let colecaoValor = colecao.value;
-    informacoes.push( {
-                        nome: nomeValor,
-                        data: dataValor,
-                        local:localValor,
-                        raridade: raridadeValor,
-                        colecao: colecaoValor
-                       }
-                    );
-    informacoes.forEach(adicionar);
-
+    if (categoriaValor == "Pokemon")
+    {
+        contadorPokemon++;
+        salvarPokemon();
+        localStorage.setItem('contadorPokemon', contadorPokemon);
+    }
+    if (categoriaValor == "Energia")
+    {
+        contadorEnrgia++;
+        salvarEnergia();
+        localStorage.setItem('contadorEnergia', contadorEnrgia);
+    }
     return null;
 }
 
-function adicionar(dados) {
-    let inserir = document.createElement('div');
-    inserir.classList.add("carta");
-    carta.appendChild(inserir);
-    let inserirCarta = document.createElement('ul');
-    inserirCarta.classList.add("quadrado");
-    inserir.appendChild(inserirCarta);
-    let inserirNome = document.createElement('li');
-    let inserirData = document.createElement('li');
-    let inserirLocal = document.createElement('li');
-    let inserirColecao = document.createElement('li');
-    let inserirRaridade = document.createElement('li');
-    inserirNome.innerHTML = dados.nome;
-    inserirData.innerHTML = dados.data;
-    inserirLocal.innerHTML = dados.local;
-    inserirColecao.innerHTML = dados.colecao;
-    inserirRaridade.innerHTML = dados.raridade;
-    inserirCarta.appendChild(inserirNome);
-    inserirCarta.appendChild(inserirData);
-    inserirCarta.appendChild(inserirLocal);
-    inserirCarta.appendChild(inserirColecao);
-    inserirCarta.appendChild(inserirRaridade);
+function salvarTreinador() {
+    const data = document.querySelectorAll(".data");
+    const local = document.querySelectorAll(".local");
+    const nome = document.querySelectorAll(".nome");
+    const raridade = document.querySelectorAll(".raridade");
+    const colecao = document.querySelectorAll(".colecao");
+    const apoiador = document.querySelectorAll(".apoiador");
+    let fotoValor = foto.value;
+    let nomeValor = nome[0].value;
+    let dataValor = data[0].value;
+    let localValor = local[0].value;
+    let raridadeValor = raridade[0].value;
+    let colecaoValor = colecao[0].value;
+    let apoiadorValor = apoiador[0].value;
+    informacoesTreinador.push( {
+                                    foto: fotoValor,
+                                    nome: nomeValor,
+                                    raridade: raridadeValor,
+                                    apoiador: apoiadorValor,
+                                    local: localValor,
+                                    data: dataValor,
+                                    colecao: colecaoValor
+                                }
+                            );
+    localStorage.setItem('informacoesTreinador', JSON.stringify(informacoesTreinador));
+    apagar();
     return null;
 }
 
-informacoes.forEach(adicionar);
+function salvarPokemon() {
+    const data = document.querySelectorAll(".data");
+    const local = document.querySelectorAll(".local");
+    const nome = document.querySelectorAll(".nome");
+    const raridade = document.querySelectorAll(".raridade");
+    const colecao = document.querySelectorAll(".colecao");
+    const elemento = document.querySelectorAll(".elemento");
+    const shiny = document.querySelectorAll(".shiny");
+    let fotoValor = foto.value;
+    let dataValor = data[0].value;
+    let localValor = local[0].value;
+    let nomeValor = nome[0].value;
+    let raridadeValor = raridade[0].value;
+    let colecaoValor = colecao[0].value;
+    let elementoValor = elemento[0].value;
+    let shinyValor = shiny.value;
+    informacoesPokemon.push( {
+                                foto: fotoValor,
+                                nome: nomeValor,
+                                colecao: colecaoValor,
+                                local:  localValor,
+                                data: dataValor,
+                                raridade: raridadeValor,
+                                elemento: elementoValor,
+                                shiny: shinyValor
+                                }
+                            );
+    localStorage.setItem('informacoesPokemon', JSON.stringify(informacoesPokemon));
+    apagar();
+    return null;
+}
 
-botaoSalvar.addEventListener("click", salvarCarta);
+function salvarEnergia() {
+    const data = document.querySelectorAll(".data");
+    const local = document.querySelectorAll(".local");
+    const raridade = document.querySelectorAll(".raridade");
+    const elemento = document.querySelectorAll(".elemento");
+    let fotoValor = foto.value;
+    let dataValor = data[0].value;
+    let localValor = local[0].value;
+    let raridadeValor = raridade[0].value;
+    let elementoValor = elemento[0].value;
+    informacoesEnergia.push( {
+                                    foto: fotoValor,
+                                    elemento: elementoValor,
+                                    local: localValor,
+                                    data: dataValor,
+                                    raridade: raridadeValor
+                                }
+                            );
+    localStorage.setItem('informacoesEnergia', JSON.stringify(informacoesEnergia));
+    apagar();
+    return null;
+}
+botao2.addEventListener("click", salvar);
